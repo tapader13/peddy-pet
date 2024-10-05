@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script
+      src="https://kit.fontawesome.com/89d5465652.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              main: 'rgb(14,122,129)',
+              second: 'rgb(19,19,19)',
+            },
+            fontFamily: {
+              inter: ['Inter', 'sans-serif'],
+              lato: ['Lato', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <header class="py-7">
+      <nav class="flex justify-between items-center w-10/12 mx-auto">
+        <div class="flex items-center gap-3">
+          <img src="./logo.webp" alt="" />
+          <h2 class="text-3xl font-extrabold font-lato text-second">Peddy</h2>
+        </div>
+        <div>
+          <ul
+            class="flex gap-5 items-center font-lato text-[16px] leading-[19px] font-normal"
+          >
+            <li>Home</li>
+            <li>Shop</li>
+            <li>Contact</li>
+          </ul>
+        </div>
+        <div>
+          <div
+            class="rounded-[50%] h-10 w-10 flex justify-center items-center border border-solid border-main/20"
+          >
+            <i class="fa-regular fa-user"></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section class="w-10/12 mx-auto">
+      <div class="flex flex-col items-center text-center w-8/12 mx-auto">
+        <h4 class="font-lato font-bold text-[24px] text-second/60">
+          Bringing Families Together ❤️‍🔥
+        </h4>
+        <h1
+          class="font-lato font-[900] my-5 text-[72px] leading-[88px] text-second"
+        >
+          Your Path to Adoption Starts Here
+        </h1>
+        <p class="text-second font-lato font-normal text-[16px] leading-[26px]">
+          It is a long established fact that a reader will be distracted by the
+          readable content of a page when looking at its layout. The point of
+          using Lorem Ipsum is that it has a.
+        </p>
+        <button
+          class="my-8 bg-main font-lato text-[20px] leading-[24px] text-white font-bold py-4 px-8 rounded-xl"
+        >
+          View More
+        </button>
+        <div class="mt-5">
+          <img src="./pet.webp" alt="" class="mx-auto" />
+        </div>
+      </div>
+    </section>
+    <section class="mt-24 mb-8 w-10/12 mx-auto">
+      <div class="text-center">
+        <h1 class="font-lato font-[900] text-[40px] leading-[48px]">
+          Adopt Your Best Friend
+        </h1>
+        <p
+          class="mt-6 font-lato font-normal text-[16px] leading-[26px] text-second/70 w-7/12 mx-auto"
+        >
+          It is a long established fact that a reader will be distracted by the
+          readable content of a page when looking at its layout. The point of
+          using Lorem Ipsum is that it has a.
+        </p>
+      </div>
+      <div class="mt-12 grid grid-cols-4 gap-8">
+        <div
+          class="p-6 bg-white border border-solid border-main/15 rounded-2xl flex items-center justify-center gap-6"
+        >
+          <img src="" alt="" />
+          <h2
+            class="font-inter font-[700] text-second text-[24px] leading-[29px]"
+          >
+            Dogs
+          </h2>
+        </div>
+        <div
+          class="p-6 bg-white border border-solid border-main/15 rounded-2xl flex items-center justify-center gap-6"
+        >
+          <img src="" alt="" />
+          <h2
+            class="font-inter font-[700] text-second text-[24px] leading-[29px]"
+          >
+            Cats
+          </h2>
+        </div>
+        <div
+          class="p-6 bg-white border border-solid border-main/15 rounded-2xl flex items-center justify-center gap-6"
+        >
+          <img src="" alt="" />
+          <h2
+            class="font-inter font-[700] text-second text-[24px] leading-[29px]"
+          >
+            Rabbits
+          </h2>
+        </div>
+        <div
+          class="p-6 bg-white border border-solid border-main/15 rounded-2xl flex items-center justify-center gap-6"
+        >
+          <img src="" alt="" />
+          <h2
+            class="font-inter font-[700] text-second text-[24px] leading-[29px]"
+          >
+            Birds
+          </h2>
+        </div>
+      </div>
+    </section>
+    <section class="w-10/12 mx-auto mb-8 flex justify-between items-center">
+      <h3 class="font-lato text-second font-[900] text-[24px] leading-[29px]">
+        Best Deal For you
+      </h3>
+      <button
+        class="font-lato font-bold text-[20px] leading-[24px] px-8 py-4 rounded-xl bg-main text-white"
+      >
+        Sort by Price
+      </button>
+    </section>
+    <script src="./index.js"></script>
+  </body>
+</html>
