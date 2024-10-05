@@ -82,14 +82,14 @@
         <button
           class="my-8 bg-main font-lato text-[20px] leading-[24px] text-white font-bold py-4 px-8 rounded-xl"
         >
-          View More
+          <a href="#adopt">View More</a>
         </button>
         <div class="mt-5">
           <img src="./pet.webp" alt="" class="mx-auto" />
         </div>
       </div>
     </section>
-    <section class="mt-24 mb-8 w-10/12 mx-auto">
+    <section id="adopt" class="mt-24 mb-8 w-10/12 mx-auto">
       <div class="text-center">
         <h1 class="font-lato font-[900] text-[40px] leading-[48px]">
           Adopt Your Best Friend
@@ -102,8 +102,8 @@
           using Lorem Ipsum is that it has a.
         </p>
       </div>
-      <div class="mt-12 grid grid-cols-4 gap-8">
-        <div
+      <div id="pets" class="mt-12 grid grid-cols-4 gap-8">
+        <!-- <div
           class="p-6 bg-white border border-solid border-main/15 rounded-2xl flex items-center justify-center gap-6"
         >
           <img src="" alt="" />
@@ -142,7 +142,7 @@
           >
             Birds
           </h2>
-        </div>
+        </div> -->
       </div>
     </section>
     <section class="w-10/12 mx-auto mb-8 flex justify-between items-center">
@@ -157,8 +157,19 @@
     </section>
     <section class="w-10/12 mx-auto">
       <div class="grid grid-cols-4 gap-6">
-        <div class="col-span-3">
-          <div
+        <div class="col-span-3 relative">
+          <div class="dot-spinner hidden">
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+          </div>
+          <div id="allpets" class="grid grid-cols-3 gap-6"></div>
+          <!-- <div
             class="p-5 bg-white rounded-xl border border-solid border-second/10"
           >
             <img class="w-full h-[160px] rounded-lg" src="" alt="" />
@@ -209,12 +220,12 @@
             </div>
           </div>
           <div></div>
-          <div></div>
+          <div></div> -->
         </div>
         <div
           class="p-5 bg-white rounded-xl border border-solid border-second/10"
         >
-          <div class="grid grid-cols-2 gap-5"></div>
+          <div id="rightside" class="grid grid-cols-2 gap-5"></div>
         </div>
       </div>
     </section>
