@@ -26,7 +26,8 @@ function showCategorys(categorys) {
   for (const element of categorys) {
     const categoryDiv = document.createElement('div');
     categoryDiv.classList.add(
-      'p-6',
+      'p-3',
+      'sm:p-6',
       'cursor-pointer',
       'bg-white',
       'border',
@@ -36,7 +37,8 @@ function showCategorys(categorys) {
       'flex',
       'items-center',
       'justify-center',
-      'gap-6',
+      'gap-3',
+      'sm:gap-6',
       'forselectactive'
     );
 
@@ -289,7 +291,7 @@ async function addToRight(id) {
 function showRightSideImg(data) {
   const div = document.createElement('div');
   div.innerHTML = `
-   <img src="${data.image}" class="w-[124px] rounded-lg h-[124px]" alt="" />
+   <img src="${data.image}" class="sm:w-[124px] w-full rounded-lg h-[124px]" alt="" />
   
    `;
   rightside.appendChild(div);
