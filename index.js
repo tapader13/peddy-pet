@@ -17,7 +17,6 @@ async function getCategorys() {
     console.log(error.message);
   }
 }
-getCategorys();
 
 //show categorys
 function showCategorys(categorys) {
@@ -82,6 +81,7 @@ async function getAllPets() {
 spinner.classList.remove('hidden');
 allpets.classList.add('hidden');
 setTimeout(() => {
+  getCategorys();
   getAllPets();
 }, 2000);
 
@@ -189,7 +189,7 @@ function showDetails(data) {
                <h3 class="mt-6 font-inter font-[700] text-[20px] leading-[24px]">
                 ${data?.pet_name}
             </h3>
-            <div class="flex gap-10">
+            <div class="flex sm:gap-10 gap-5">
             
             <div>
             <p
