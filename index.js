@@ -125,7 +125,7 @@ function showAllPets(pets) {
               >Price : ${element?.price ? element.price : '0'}$
             </p>
             <hr class="my-4 text-second/10" />
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between xl:gap-1">
               <div onClick="addToRight('${element.petId}')"
                 class="px-[18px] py-[9px] text-main rounded-lg border boprder-solid border-main/15 cursor-pointer"
               >
@@ -157,9 +157,7 @@ function showAllPets(pets) {
     No Information Available
   </h3>
   <p class="text-second/70 w-7/12 mx-auto font-lato font-normal text-[16px] leading-[26px]">
-    It is a long established fact that a reader will be distracted by the
-    readable content of a page when looking at its layout. The point of using
-    Lorem Ipsum is that it has a.
+    Currently, there are no pets available for this type of pet. Please check later for updates on our available pets. We are continuously working to provide you best pets.
   </p>
 </div>
 
@@ -291,7 +289,7 @@ async function addToRight(id) {
 function showRightSideImg(data) {
   const div = document.createElement('div');
   div.innerHTML = `
-   <img src="${data.image}" class="sm:w-[124px] w-full rounded-lg h-[124px]" alt="" />
+   <img src="${data.image}" class="lg:w-full md:w-full w-full rounded-lg h-[124px]" alt="" />
   
    `;
   rightside.appendChild(div);
