@@ -1,6 +1,7 @@
 const spinner = document.querySelector('.dot-spinner');
 const allpets = document.getElementById('allpets');
 const rightside = document.getElementById('rightside');
+const sort = document.getElementById('sort');
 let loadData = [];
 
 //find categorys
@@ -63,18 +64,24 @@ function showCategorys(categorys) {
 //get all pets
 async function getAllPets() {
   try {
+    spinner.classList.add('hidden');
+    allpets.classList.remove('hidden');
     const response = await fetch(
       'https://openapi.programming-hero.com/api/peddy/pets'
     );
     const data = await response.json();
+
+    loadData.push(...data.pets);
     showAllPets(data.pets);
-    loadData = data.pets;
-    console.log(data);
   } catch (error) {
     console.log(error.message);
   }
 }
-getAllPets();
+spinner.classList.remove('hidden');
+allpets.classList.add('hidden');
+setTimeout(() => {
+  getAllPets();
+}, 2000);
 
 //show all pets
 function showAllPets(pets) {
@@ -113,7 +120,7 @@ function showAllPets(pets) {
               class="text-second/70 mt-1 font-lato font-normal text-[16px] leading-[19px]"
             >
               <span class="mr-1"><i class="fa-solid fa-dollar-sign"></i></span
-              >Price : ${element?.price ? element.price : 'N/A'}$
+              >Price : ${element?.price ? element.price : '0'}$
             </p>
             <hr class="my-4 text-second/10" />
             <div class="flex items-center justify-between">
@@ -122,12 +129,14 @@ function showAllPets(pets) {
               >
                 <span><i class="fa-regular fa-thumbs-up"></i></span>
               </div>
-              <div
-                class="px-[18px] py-[9px] text-main rounded-lg border boprder-solid border-main/15 cursor-pointer"
+              <button data-id="${element.petId}" onClick="ShowCounterModal('${
+        element.petId
+      }')"
+                class="px-[18px] py-[9px] text-main rounded-lg border border-solid adopt-btn border-main/15 cursor-pointer"
               >
                 Adopt
-              </div>
-              <div
+              </button>
+              <div onClick="showDetails('${element.petId}')"
                 class="px-[18px] py-[9px] text-main rounded-lg border boprder-solid border-main/15 cursor-pointer"
               >
                 Details
@@ -154,6 +163,51 @@ function showAllPets(pets) {
 
         `;
   }
+}
+
+//show details of pet in modal
+function showDetails(id) {
+  console.log(id);
+  const modal = document.getElementById('my_modal_2');
+  modal.showModal();
+  modal.innerHTML = `
+      <div class="modal-box p-6">
+              <h3 class="text-3xl text-second font-bold">Congrates!</h3>
+              <p class="py-4">Adaption process is start for your pet</p>
+              <h3 class="text-3xl text-second font-bold" id="count"></h3>
+              <div class="modal-action">
+              <form method="dialog">
+                  <button class="btn ">Close</button>
+              </form>
+              </div>
+          </div>
+  `;
+}
+
+//show adopt modal
+function ShowCounterModal(id) {
+  const modal = document.getElementById('my_modal_1');
+  count.innerHTML = 3;
+  const adoptBtn = document.querySelector(`.adopt-btn[data-id="${id}"]`);
+  modal.showModal();
+  const modalInterval = setInterval(() => {
+    const count = document.getElementById('count');
+    if (count.innerHTML > 0) {
+      count.innerHTML = count.innerHTML - 1;
+    }
+    if (count.innerHTML <= 0) {
+      clearInterval(modalInterval);
+      count.innerHTML = 1;
+      if (adoptBtn) {
+        console.log(adoptBtn);
+        adoptBtn.setAttribute('disabled', true);
+        adoptBtn.style.cursor = 'not-allowed';
+        adoptBtn.style.opacity = '0.5';
+        adoptBtn.textContent = 'Adopted';
+      }
+      modal.close();
+    }
+  }, 1000);
 }
 
 //add to right
@@ -188,16 +242,26 @@ async function getCategoryPets(category) {
       `https://openapi.programming-hero.com/api/peddy/category/${category}`
     );
     const data = await response.json();
+    loadData = [];
+    loadData.push(...data.data);
     showAllPets(data.data);
-    console.log(data);
   } catch (error) {
     console.log(error.message);
   }
 }
 
 //sort by price
-function sortByPrice() {
-  allpets.innerHTML = '';
-  const priceSort = loadData.sort((a, b) => a.price - b.price);
-  showAllPets(priceSort);
-}
+sort.addEventListener('click', () => {
+  spinner.classList.remove('hidden');
+  allpets.classList.add('hidden');
+  setTimeout(() => {
+    loadData.sort((a, b) => {
+      const priceA = a.price === null || a.price === undefined ? 0 : a.price;
+      const priceB = b.price === null || b.price === undefined ? 0 : b.price;
+      return priceB - priceA;
+    });
+    showAllPets(loadData);
+    spinner.classList.add('hidden');
+    allpets.classList.remove('hidden');
+  }, 2000);
+});

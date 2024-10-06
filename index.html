@@ -150,6 +150,7 @@
         Best Deal For you
       </h3>
       <button
+        id="sort"
         class="font-lato font-bold text-[20px] leading-[24px] px-8 py-4 rounded-xl bg-main text-white"
       >
         Sort by Price
@@ -314,6 +315,21 @@
         </div>
       </div>
     </footer>
+
+    <dialog id="my_modal_1" class="modal">
+      <div class="modal-box text-center">
+        <h3 class="text-3xl text-second font-bold">Congrates!</h3>
+        <p class="py-4">Adaption process is start for your pet</p>
+        <h3 class="text-3xl text-second font-bold" id="count"></h3>
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn hidden">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="my_modal_2" class="modal"></dialog>
     <script src="./index.js"></script>
   </body>
 </html>
