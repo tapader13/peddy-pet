@@ -35,4 +35,4 @@
 
 ## Live Link
 
-- [Deployed Project Live Link](#) 
+- [Deployed Project Live Link](https://clever-eclair-42e7e7.netlify.app/) 
