@@ -136,7 +136,7 @@ function showAllPets(pets) {
               >
                 Adopt
               </button>
-              <div onClick="showDetails('${element.petId}')"
+              <div onClick="fetchPetDetails('${element.petId}')"
                 class="px-[18px] py-[9px] text-main rounded-lg border boprder-solid border-main/15 cursor-pointer"
               >
                 Details
@@ -164,20 +164,82 @@ function showAllPets(pets) {
         `;
   }
 }
+//fetch pet details
+async function fetchPetDetails(id) {
+  try {
+    const response = await fetch(
+      `https://openapi.programming-hero.com/api/peddy/pet/${id}`
+    );
+    const data = await response.json();
+    showDetails(data.petData);
+  } catch (error) {
+    console.log(error.message);
+  }
+}
 
 //show details of pet in modal
-function showDetails(id) {
-  console.log(id);
+function showDetails(data) {
   const modal = document.getElementById('my_modal_2');
   modal.showModal();
   modal.innerHTML = `
       <div class="modal-box p-6">
-              <h3 class="text-3xl text-second font-bold">Congrates!</h3>
-              <p class="py-4">Adaption process is start for your pet</p>
-              <h3 class="text-3xl text-second font-bold" id="count"></h3>
+             <img class="w-full rounded-lg h-[220px]" src=${
+               data?.image
+             } alt="" />
+               <h3 class="mt-6 font-inter font-[700] text-[20px] leading-[24px]">
+                ${data?.pet_name}
+            </h3>
+            <div class="flex gap-10">
+            
+            <div>
+            <p
+              class="text-second/70 mt-1 font-lato font-normal text-[16px] leading-[19px]"
+            >
+              <span class="mr-1"><i class="fas fa-th-large icon"></i> </span>
+              Breed: ${data?.breed ? data.breed : 'N/A'}
+            </p>
+            <p
+              class="text-second/70 mt-1 font-lato font-normal text-[16px] leading-[19px]"
+            >
+              <span class="mr-1"><i class="fa-regular fa-calendar"></i></span
+              >Birth: ${data?.date_of_birth ? data.date_of_birth : 'N/A'}
+            </p>
+            <p
+              class="text-second/70 mt-1 font-lato font-normal text-[16px] leading-[19px]"
+            >
+              <span class="mr-1"><i class="fa-solid fa-syringe"></i></span
+              >Vaccinated_status: ${
+                data?.vaccinated_status ? data.vaccinated_status : 'N/A'
+              }
+            </p>
+            
+            </div>
+            <div>
+            <p
+              class="text-second/70 mt-1 font-lato font-normal text-[16px] leading-[19px]"
+            >
+              <span class="mr-1"><i class="fa-solid fa-mercury"></i></span
+              >Gender: ${data?.gender ? data.gender : 'N/A'}
+            </p>
+            <p
+              class="text-second/70 mt-1 font-lato font-normal text-[16px] leading-[19px]"
+            >
+              <span class="mr-1"><i class="fa-solid fa-dollar-sign"></i></span
+              >Price : ${data?.price ? data.price : '0'}$
+            </p>
+            
+            </div>
+            </div>
+            <hr class="my-4 text-second/10" />
+            <div>
+            <h5 class="font-inter font-[700] text-[20px] leading-[24px]">Details Information</h5>         
+            <p class="text-second/70 mt-2 font-inter font-normal text-[16px] leading-[24px]">${
+              data?.pet_details
+            }</p>
+            </div>
               <div class="modal-action">
-              <form method="dialog">
-                  <button class="btn ">Close</button>
+              <form class="w-full" method="dialog">
+                  <button class="btn w-full py-[13px] rounded-lg border border-solid border-main/20 bg-main/10 text-main font-lato text-[18px] leading-[22px] font-bold ">Close</button>
               </form>
               </div>
           </div>
